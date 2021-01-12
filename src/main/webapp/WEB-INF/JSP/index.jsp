@@ -8,5 +8,6 @@
 </head>
 <body>
 	인덱스 입니다.
+	message = ${msg }
 </body>
 </html>
