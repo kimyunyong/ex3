@@ -2,7 +2,7 @@ package com.yong.ex3.domain;
 
 import java.util.Date;
 
-public class User {
+public class UserVo extends SearchVo{
 	private String uId;
 	private String uPw;
 	private String uName;
@@ -11,8 +11,9 @@ public class User {
 	private String uDevice;
 	private String uPushToken;
 	private Date uJoinDate;
+	private String uIsUse;
 	
-	public User() {}
+	public UserVo() {}
 
 	public String getuId() {
 		return uId;
@@ -77,11 +78,20 @@ public class User {
 	public void setuJoinDate(Date uJoinDate) {
 		this.uJoinDate = uJoinDate;
 	}
-		
+	
+	public String getuIsUse() {
+		return uIsUse;
+	}
+
+	public void setuIsUse(String uIsUse) {
+		this.uIsUse = uIsUse;
+	}
+
 	@Override
 	public String toString() {
-		return "User [uId=" + uId + ", uPw=" + uPw + ", uEmail=" + uEmail + ", uSex=" + uSex + ", uDevice=" + uDevice
-				+ ", uPushToken=" + uPushToken + ", uJoinDate=" + uJoinDate + "]";
-	}	
+		return "UserVo [uId=" + uId + ", uPw=" + uPw + ", uName=" + uName + ", uEmail=" + uEmail + ", uSex=" + uSex
+				+ ", uDevice=" + uDevice + ", uPushToken=" + uPushToken + ", uJoinDate=" + uJoinDate + ", uIsUse="
+				+ uIsUse + "]" + ", " + super.toString();
+	}
 	
 }

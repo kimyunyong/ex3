@@ -4,8 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yong.ex3.mapper.admin.UserMapper">
 	
-	<!-- 유저 리스트 -->
-    <select id="getUserList" resultType="User">
+    <select id="getUserList" resultType="UserVo" parameterType="UserVo">
 	   	SELECT		U_ID 			AS uId,
 					U_PW 			AS uPw,
 					U_NAME 			AS uName,
@@ -14,8 +13,43 @@
 					U_DEVICE 		AS uDevice,
 					U_PUSH_TOKEN	AS uPushToken,
 					U_JOIN_DATE		AS uJoinDate
-		FROM		user
+		FROM		USER
         WHERE 		1=1
-        ORDER BY 	U_ID ASC
+        ORDER BY 	U_ID DESC
+		LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
     </select>
+    
+    <select id="getUser" resultType="UserVo" parameterType="UserVo">
+	   	SELECT		U_ID 			AS uId,
+					U_PW 			AS uPw,
+					U_NAME 			AS uName,
+					U_EMAIL 		AS uEmail,
+					U_SEX 			AS uSex,
+					U_DEVICE 		AS uDevice,
+					U_PUSH_TOKEN	AS uPushToken,
+					U_JOIN_DATE		AS uJoinDate,
+					U_IS_USE		AS uIsUse
+		FROM		USER
+        WHERE 		1=1
+        AND			U_ID = #{uId}
+    </select>
+    
+   	<update id="updateUser" parameterType="UserVo">
+		<![CDATA[
+			UPDATE 	user
+			SET		U_NAME 			= #{uName}, 			
+					U_EMAIL 		= #{uEmail},			
+					U_SEX 			= #{uSex}
+			WHERE	1=1
+			AND		U_ID = #{uId}
+		]]>
+	</update>
+    
+    <select id="getUserCount" resultType="int">
+	   	SELECT		COUNT(*)
+		FROM		USER
+        WHERE 		1=1
+    </select>
+    
+   
 </mapper>

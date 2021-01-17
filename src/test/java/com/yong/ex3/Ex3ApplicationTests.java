@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.yong.ex3.domain.User;
+import com.yong.ex3.domain.UserVo;
 import com.yong.ex3.service.admin.UserService;
 
 @SpringBootTest
@@ -30,13 +30,13 @@ class Ex3ApplicationTests {
 	
 	@Test
 	public void getUserList() {
-		List<User> list = userService.getUserList();
+		List<UserVo> list = userService.getUserList(new UserVo());
 		
-		log.info("getUserList()");
+		log.info("getUserList(UserVo)");
 		
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		for (User user : list) {
+		for (UserVo user : list) {
 			log.info(user.getuId());
 			
 			String to = transFormat.format(user.getuJoinDate());

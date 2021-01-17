@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.yong.ex3.domain.User;
+import com.yong.ex3.domain.UserVo;
 
 @Mapper
 public interface UserMapper {
-    public List<User> getUserList();
-    
+    public List<UserVo> getUserList(UserVo userVo);
+    public int getUserCount();
+    public UserVo getUser(UserVo userVo);
+    public void updateUser(UserVo userVo);
 }
